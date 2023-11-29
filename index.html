@@ -35,8 +35,8 @@
   position: absolute;
   top: 50%;
   top: calc(
-  min(500px, 100vw) / 16 * 9 / 2 + 1rem); /* centre verticalement ~50% vertical */
-  transform: translateY(-50%); /* methode du point mort */
+  min(500px, 100vw) / 16 * 9 / 2 + 1rem);
+  transform: translateY(-50%);
   width: 2rem;
   height: 2rem;
   background: rgba(0,0,0,0.5);
@@ -55,18 +55,18 @@
   right: 0;
 }
 .caroussel_liste-liens {
-  display: flex; /* aligne horizontalement les enfants */
-  justify-content: center; /* centre horizontalement les enfants */
-  margin: 0; /* enlève les marges par défaut */ 
-  padding: 0; /* enlève les padding par défaut */
-  list-style:none; /* enlève les puces par défaut */
-  gap: 1rem; /* espace entre les enfants */
+  display: flex;
+  justify-content: center; 
+  margin: 0;  
+  padding: 0; 
+  list-style:none; 
+  gap: 1rem;
 }
     </style>
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <div class="carrousel" x-data="{}">
+    <div class="carrousel" x-data="{hrefCourant: '#ecran-1',}">
         <button class="carrousel_btn carrousel_btn-avant" aria-label="slide précedant"
          @click="parent = $refs.parent;parent.scrollLeft -= parent.clientWidth">
          &lt;
@@ -108,7 +108,7 @@
             </div>
         </div>
         <ul class="caroussel_liste-liens">
-            <li><a href="#ecran-1" class="caroussel_lien">ecran 1</a></li>
+            <li><a href="#ecran-1" :class="{actif:hrefCourant==='#ecran-1'}">ecran 1</a></li>
             <li><a href="#ecran-2" class="caroussel_lien">ecran 2</a></li>
             <li><a href="#ecran-3" class="caroussel_lien">ecran 3</a></li>
             <li><a href="#ecran-4" class="caroussel_lien">ecran 4</a></li>
